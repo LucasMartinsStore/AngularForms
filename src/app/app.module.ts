@@ -8,6 +8,7 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { CadastroComponent } from "./cadastro/cadastro.component";
 import { SucessoCadastroComponent } from "./sucesso-cadastro/sucesso-cadastro.component";
 import { FormsModule } from "@angular/forms";
+import { MensagemErroComponent } from './components/mensagem-erro/mensagem-erro.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FormsModule } from "@angular/forms";
     FooterComponent,
     CadastroComponent,
     SucessoCadastroComponent,
+    MensagemErroComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
