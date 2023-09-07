@@ -10,7 +10,32 @@
     <h3 class="principal__subtitulo">Dados pessoais</h3>
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="nome">Nome Completo</label>
-      <input name="nome" id="nome" class="campo__escrita" />
+      <input
+        name="nome"
+        id="nome"
+        class="campo__escrita"
+        ngModel
+        required
+        minlength="2"
+      />
+      <div
+        *ngIf="
+          (formsRegister.controls['nome']?.invalid &&
+            formsRegister.controls['nome']?.touched) ||
+          formsRegister.controls['nome']?.dirty
+        "
+      >
+        <span
+          class="erro__texto"
+          *ngIf="formsRegister.controls['nome']?.errors?.['required']"
+          >Campo de nome deve ser preenchido.</span
+        >
+        <span
+          class="erro__texto"
+          *ngIf="formsRegister.controls['nome']?.errors?.['minlength']"
+          >O nome de ter no mínimp 2 caracteres.</span
+        >
+      </div>
     </div>
     <div class="formulario__dupla">
       <div class="formulario__campo">
