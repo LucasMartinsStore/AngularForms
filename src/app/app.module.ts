@@ -9,6 +9,7 @@ import { CadastroComponent } from "./cadastro/cadastro.component";
 import { SucessoCadastroComponent } from "./sucesso-cadastro/sucesso-cadastro.component";
 import { FormsModule } from "@angular/forms";
 import { MensagemErroComponent } from './components/mensagem-erro/mensagem-erro.component';
+import { MaiorIdadeDirective } from './directives/maior-idade.directive';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MensagemErroComponent } from './components/mensagem-erro/mensagem-erro.
     CadastroComponent,
     SucessoCadastroComponent,
     MensagemErroComponent,
+    MaiorIdadeDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

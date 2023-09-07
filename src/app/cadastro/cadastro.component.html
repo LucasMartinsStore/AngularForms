@@ -40,7 +40,24 @@
           type="date"
           class="campo__escrita"
           ngModel
+          required
+          #nascimento="ngModel"
+          maiorIdadeValidator
         />
+        <div
+          *ngIf="
+            (nascimento?.invalid && nascimento?.touched) || nascimento?.dirty
+          "
+        >
+          <app-mensagem-erro
+            *ngIf="nascimento?.errors?.['required']"
+            mensagem="A data de nascimento deve ser preenchida."
+          ></app-mensagem-erro>
+          <app-mensagem-erro
+            *ngIf="nascimento?.errors?.['maiorIdadeValidator']"
+            mensagem="O usuário deve ter mais de 18 anos."
+          ></app-mensagem-erro>
+        </div>
       </div>
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="telefone">Contato</label>
