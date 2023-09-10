@@ -114,37 +114,80 @@
 
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="cep">CEP</label>
-      <input name="cep" id="cep" class="campo__escrita" />
-      <div id="erro"></div>
+      <input
+        name="cep"
+        id="cep"
+        class="campo__escrita"
+        ngModel
+        required
+        #cep="ngModel"
+        pattern="^(\d{5})(-?\d{3})$"
+        minlength="8"
+        maxlength="9"
+        (blur)="consultaCep($event, formsRegister)"
+        validatorCep
+      />
+      <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
+        <app-mensagem-erro
+          *ngIf="cep?.errors?.['required']"
+          mensagem="O campo de cep é obrigatório"
+        ></app-mensagem-erro>
+        <app-mensagem-erro
+          *ngIf="cep?.errors?.['pattern']"
+          mensagem="O campo deve seguir esse seguinte exemplo: 00000-000"
+        ></app-mensagem-erro>
+        <app-mensagem-erro
+          *ngIf="cep?.errors?.['validatorCep']"
+          mensagem="O cep digitado não existe"
+        ></app-mensagem-erro>
+      </div>
     </div>
 
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="endereco">Endereço</label>
-      <input name="endereco" id="endereco" class="campo__escrita" />
+      <input name="endereco" ngModel id="endereco" class="campo__escrita" />
     </div>
     <div class="formulario__dupla">
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="numero">Numero</label>
-        <input name="numero" id="numero" class="campo__escrita" />
+        <input
+          name="numero"
+          ngModel
+          required
+          id="numero"
+          class="campo__escrita"
+          #numero="ngModel"
+        />
+        <div *ngIf="numero?.touched || numero?.dirty">
+          <app-mensagem-erro
+            *ngIf="numero?.errors?.['required']"
+            mensagem="O campo de Numero é obrigatório é obrigatório"
+          ></app-mensagem-erro>
+        </div>
       </div>
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="complemento">Complemento</label>
-        <input name="complemento" id="complemento" class="campo__escrita" />
+        <input
+          name="complemento"
+          ngModel
+          id="complemento"
+          class="campo__escrita"
+        />
       </div>
     </div>
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="bairro">Bairro</label>
-      <input name="bairro" id="bairro" class="campo__escrita" />
+      <input name="bairro" id="bairro" ngModel class="campo__escrita" />
     </div>
     <div class="formulario__dupla">
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="cidade">Cidade</label>
-        <input name="cidade" id="cidade" class="campo__escrita" />
+        <input name="cidade" id="cidade" ngModel class="campo__escrita" />
       </div>
 
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="estado">UF</label>
-        <select id="estado" name="estado" class="campo__escrita">
+        <select id="estado" ngModel name="estado" class="campo__escrita">
           <option value="AC">Acre</option>
           <option value="AL">Alagoas</option>
           <option value="AP">Amapá</option>
